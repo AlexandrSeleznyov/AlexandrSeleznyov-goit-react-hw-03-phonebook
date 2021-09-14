@@ -1,9 +1,9 @@
-const Filter = ({ filter, HandleInputName }) => {
+const Filter = ({ filter, handleInputName }) => {
   return (
     <label>
       Find contacts by name:
       <input
-        onChange={HandleInputName}
+        onChange={handleInputName}
         type="text"
         value={filter}
         name="filter"

@@ -1,7 +1,7 @@
-function Contacts({ visibleContacts, deleteContact }) {
+function Contacts({ contacts, deleteContact }) {
   return (
     <ul>
-      {visibleContacts.map((contact) => (
+      {contacts.map((contact) => (
         <li key={contact.id}>
           {contact.name}: {contact.number}
           <button type="button" onClick={() => deleteContact(contact)}>

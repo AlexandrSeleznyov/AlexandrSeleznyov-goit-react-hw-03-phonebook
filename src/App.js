@@ -1,7 +1,7 @@
 import React from "react";
 import ContactForm from "./Components/ContactForm/ContactForm";
 import Filter from "./Components/Filter/Filter";
-import Contacts from "./Components/Contacts/Contacts";
+import ContactsList from "./Components/ContactsList/ContactsList";
 
 export default class App extends React.Component {
   state = {
@@ -31,19 +31,8 @@ export default class App extends React.Component {
       localStorage.setItem("contacts", JSON.stringify(nextContacts));
     }
   }
-  Contacts = () => {
-    return this.state.contacts.map((contact) => {
-      return (
-        <div key={contact.id}>
-          {contact.name} : {contact.number}
-        </div>
-      );
-    });
-  };
 
   formSubmitHandler = (data) => {
-    console.log("dataaaaaaaaaaaaaaaaaaaaaaaaa", data);
-
     const findName = this.state.contacts.find((contact) => {
       return contact.name === data.name;
     });
@@ -54,10 +43,9 @@ export default class App extends React.Component {
       : alert(`${data.name} is already in contact`);
   };
 
-  HandleInputName = (e) => {
+  handleInputName = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log(this.state);
   };
 
   visibleContacts = () => {
@@ -76,20 +64,19 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
         <h1>Phonebook</h1>
         <ContactForm formSubmitHandler={this.formSubmitHandler} />
-        <h1>Contacts</h1>
-        <Contacts
-          visibleContacts={this.visibleContacts()}
-          deleteContact={this.deleteContact}
-        />
-
+        <h2>Contacts</h2>
         <Filter
           filter={this.state.filter}
-          HandleInputName={this.HandleInputName}
+          handleInputName={this.HandleInputName}
         />
-      </>
+        <ContactsList
+          contacts={this.visibleContacts()}
+          deleteContact={this.deleteContact}
+        />
+      </div>
     );
   }
 }

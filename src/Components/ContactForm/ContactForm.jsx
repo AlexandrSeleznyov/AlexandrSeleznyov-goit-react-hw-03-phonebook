@@ -8,7 +8,7 @@ export default class ContactForm extends React.Component {
     number: "",
   };
 
-  HandleInput = (e) => {
+  handleInput = (e) => {
     console.log(e.currentTarget.value);
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -17,19 +17,18 @@ export default class ContactForm extends React.Component {
   handleSubmit = (e) => {
     const { name, number } = this.state;
     e.preventDefault();
-    let id = uuidv4();
+
     const newData = {
       name,
       number,
-      id,
+      id: uuidv4(),
     };
     this.props.formSubmitHandler(newData);
-    this.reset();
+    this.resetState();
   };
 
-  reset = () => {
+  resetState = () => {
     this.setState({
-      filter: "",
       name: "",
       number: "",
     });

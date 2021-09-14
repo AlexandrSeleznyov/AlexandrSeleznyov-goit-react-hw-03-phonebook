@@ -1,4 +1,4 @@
-function Contacts({ contacts, deleteContact }) {
+function ContactsList({ contacts, deleteContact }) {
   return (
     <ul>
       {contacts.map((contact) => (
@@ -13,4 +13,4 @@ function Contacts({ contacts, deleteContact }) {
   );
 }
 
-export default Contacts;
+export default ContactsList;

@@ -40,7 +40,7 @@ export default class ContactForm extends React.Component {
         <label>
           Name:
           <input
-            onChange={this.HandleInput}
+            onChange={this.handleInput}
             type="text"
             value={this.state.name}
             name="name"
@@ -53,7 +53,7 @@ export default class ContactForm extends React.Component {
         <label>
           Number:
           <input
-            onChange={this.HandleInput}
+            onChange={this.handleInput}
             type="tel"
             value={this.state.number}
             name="number"
